@@ -11,6 +11,7 @@ public class silah : MonoBehaviour
     private bool isshooted=false;
     private float delay;
     public float delaytime;
+    public ParticleSystem shoteffect;
     void Update()
     {
         //timer
@@ -20,7 +21,10 @@ public class silah : MonoBehaviour
         if (Input.GetKeyDown("space")){
             if (!isshooted)
             {
+                //clone mermi
                 Instantiate(mermi1, barrel.position, barrel.rotation);
+                //clone particle
+                Instantiate(shoteffect, barrel.position, barrel.rotation);
                 isshooted = true;
             }
             else
