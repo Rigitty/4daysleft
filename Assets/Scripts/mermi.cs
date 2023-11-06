@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class mermi : MonoBehaviour
 {
-    public Rigidbody2D rb2D;
-    [SerializeField] float hiz=10;
-     public GameObject mermi1;
-     public Transform konum;
-void Update(){
-    bool ates= Input.GetKeyDown("space");
-        
-        if (ates){
-        Instantiate(mermi1,konum.position,konum.rotation);
-        rb2D.velocity=new Vector3(hiz * Time.deltaTime,0,0);
+    public int bulletspeed;
+    private float time1;
+    public float lifetime;
+    private void Update()
+    {
+        //timer
+        time1 = time1 +Time.deltaTime;
 
+        //velocity
+        transform.Translate(Vector3.right* bulletspeed*Time.deltaTime);
 
+        //destroy
+        if (time1 > lifetime)
+        {
+            Destroy(gameObject);
         }
-        else{
-            ates=false;
-        }
-        
-}
+    }
 }
