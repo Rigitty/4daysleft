@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class silah : MonoBehaviour
 {
+   
     public GameObject mermi1;
     public Transform barrel;
     private float time1;
@@ -13,6 +14,8 @@ public class silah : MonoBehaviour
     public GameObject arm;
     public float cooltimedefault;
     private float cooltime;
+  
+    
     void Update()
     {
         //timer
@@ -21,13 +24,15 @@ public class silah : MonoBehaviour
         {
            cooltime = cooltime - Time.deltaTime;
         }
-
+        print(barrel.transform.rotation.eulerAngles);
         if (Input.GetKeyDown("space") && cooltime<=0){
+           
                 cooltime = cooltimedefault;
                 //clone mermi
                 Instantiate(mermi1, barrel.position, barrel.rotation);
-                //clone particle
-                Instantiate(shoteffect, barrel.position, barrel.rotation);
+           
+            //clone particle
+            Instantiate(shoteffect, barrel.position, barrel.rotation);
                 //animate
                 arm.GetComponent<Animator>().SetTrigger("shot");
         }
