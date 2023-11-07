@@ -8,16 +8,29 @@ public class silah : MonoBehaviour
 {
    
     public GameObject mermi1;
-    public Transform barrel;
+    private Transform barrel;
+    public Transform rightbarrel, leftbarrel;
     private float time1;
     public GameObject shoteffect;
-    public GameObject arm;
+    private GameObject arm;
+    public GameObject armleft, armright;
     public float cooltimedefault;
     private float cooltime;
   
     
     void Update()
     {
+        if (GetComponent<armcontroller>().arm.GetComponent<Transform>().eulerAngles.z > 90 && GetComponent<armcontroller>().arm.GetComponent<Transform>().eulerAngles.z < 270)
+        {
+            barrel = rightbarrel;
+            arm = armright;
+        }
+        else
+        {
+            barrel = leftbarrel;
+            arm = armleft;
+        }
+
         //timer
         time1 = time1 + Time.deltaTime;
         if (cooltime > 0)
