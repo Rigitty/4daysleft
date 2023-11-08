@@ -16,7 +16,7 @@ public class silah : MonoBehaviour
     public GameObject armleft, armright;
     public float cooltimedefault;
     private float cooltime;
-  
+    public AudioClip shotsound;
     
     void Update()
     {
@@ -39,7 +39,7 @@ public class silah : MonoBehaviour
         }
         print(barrel.transform.rotation.eulerAngles);
         if (Input.GetKeyDown("space") && cooltime<=0){
-           
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(shotsound);
                 cooltime = cooltimedefault;
                 //clone mermi
                 Instantiate(mermi1, barrel.position, barrel.rotation);
