@@ -8,6 +8,7 @@ public class armcontroller : MonoBehaviour
     private int privatespeed=100;
     public int publicspeed;
     public GameObject ch1,ch2,ar1,ar2;
+    bool canMove = true;
     private void Update()
     {
         print(arm.GetComponent<Transform>().eulerAngles.z);
@@ -25,14 +26,22 @@ public class armcontroller : MonoBehaviour
             ar1.SetActive(true);
             ar2.SetActive(false);
         }
+        if (canMove)
+        {
+            if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)))
+            {
+                arm.transform.Rotate(new Vector3(0, 0, 1) * publicspeed * privatespeed * Time.deltaTime);
+            }
+            if ((Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+            {
+                arm.transform.Rotate(new Vector3(0, 0, -1) * publicspeed * privatespeed * Time.deltaTime);
+            }
+        }
 
-        if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)))
-        {
-            arm.transform.Rotate(new Vector3(0,0,1)* publicspeed*privatespeed*Time.deltaTime);
-        }
-        if ((Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
-        {
-            arm.transform.Rotate(new Vector3(0, 0, -1) * publicspeed * privatespeed * Time.deltaTime);
-        }
+    }
+    public void DisableControls()
+    {
+        canMove = false;
+
     }
 }
