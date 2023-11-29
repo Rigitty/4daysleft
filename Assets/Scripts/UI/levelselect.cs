@@ -18,6 +18,18 @@ public class levelselect : MonoBehaviour
     {
         SceneManager.LoadScene("level3");
     }
+    public void level4_btn()
+    {
+        SceneManager.LoadScene("level4");
+    }
+    public void level5_btn()
+    {
+        SceneManager.LoadScene("level5");
+    }
+    public void level6_btn()
+    {
+        SceneManager.LoadScene("level6");
+    }
     public void back_btn()
     {
         mainmenu.SetActive(true);

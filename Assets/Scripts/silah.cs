@@ -17,10 +17,10 @@ public class silah : MonoBehaviour
     public float cooltimedefault;
     private float cooltime;
     public AudioClip shotsound;
-    
+    public GameObject armcontrollerobj;
     void Update()
     {
-        if (GetComponent<armcontroller>().arm.GetComponent<Transform>().eulerAngles.z > 90 && GetComponent<armcontroller>().arm.GetComponent<Transform>().eulerAngles.z < 270)
+        if (armcontrollerobj.GetComponent<armcontroller>().arm.GetComponent<Transform>().eulerAngles.z > 90 && armcontrollerobj.GetComponent<armcontroller>().arm.GetComponent<Transform>().eulerAngles.z < 270)
         {
             barrel = rightbarrel;
             arm = armright;
@@ -37,9 +37,8 @@ public class silah : MonoBehaviour
         {
            cooltime = cooltime - Time.deltaTime;
         }
-        print(barrel.transform.rotation.eulerAngles);
-        if (Input.GetKeyDown("space") && cooltime<=0){
-            Camera.main.GetComponent<AudioSource>().PlayOneShot(shotsound);
+        if ((Input.GetKeyDown(KeyCode.Mouse0)|| Input.GetKeyDown(KeyCode.Space)) && cooltime<=0){
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(shotsound,0.05f);
                 cooltime = cooltimedefault;
                 //clone mermi
                 Instantiate(mermi1, barrel.position, barrel.rotation);

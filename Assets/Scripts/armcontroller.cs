@@ -9,9 +9,9 @@ public class armcontroller : MonoBehaviour
     public int publicspeed;
     public GameObject ch1,ch2,ar1,ar2;
     bool canMove = true;
+    public GameObject pausemenuobj;
     private void Update()
     {
-        print(arm.GetComponent<Transform>().eulerAngles.z);
         if(arm.GetComponent<Transform>().eulerAngles.z>90 && arm.GetComponent<Transform>().eulerAngles.z < 270)
         {
             ch1.SetActive(false);
@@ -28,6 +28,7 @@ public class armcontroller : MonoBehaviour
         }
         if (canMove)
         {
+            /*
             if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)))
             {
                 arm.transform.Rotate(new Vector3(0, 0, 1) * publicspeed * privatespeed * Time.deltaTime);
@@ -35,6 +36,15 @@ public class armcontroller : MonoBehaviour
             if ((Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
             {
                 arm.transform.Rotate(new Vector3(0, 0, -1) * publicspeed * privatespeed * Time.deltaTime);
+            }
+            */
+            if (pausemenuobj.GetComponent<PauseMenu>().isGamePaused == false)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                Vector2 direction = mousePosition - transform.position;
+                float angle = Vector2.SignedAngle(Vector2.right, direction);
+                transform.eulerAngles = new Vector3(0, 0, angle);
             }
         }
 
