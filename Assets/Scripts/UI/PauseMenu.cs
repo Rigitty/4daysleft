@@ -7,20 +7,22 @@ public class PauseMenu : MonoBehaviour
     public bool isGamePaused = false;
     public GameObject pauseMenu_obj;
     public bool isGameOver = false;
+    public GameObject badguy;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
-        {
-            if (!isGamePaused)
+            if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
             {
-                Pause();
-            }
-            else
-            {
-                Resume();
+                if (!isGamePaused)
+                {
+                    Pause();
+                }
+                else
+                {
+                    Resume();
+                }
             }
         }
-    }
+    
     private void Pause()
     {
         Time.timeScale = 0;

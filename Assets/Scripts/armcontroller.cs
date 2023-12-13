@@ -5,7 +5,6 @@ using UnityEngine;
 public class armcontroller : MonoBehaviour
 {
     public GameObject arm;
-    private int privatespeed=100;
     public int publicspeed;
     public GameObject ch1,ch2,ar1,ar2;
     bool canMove = true;

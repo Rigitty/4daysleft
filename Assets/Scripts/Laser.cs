@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Laser : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Laser : MonoBehaviour
     private RaycastHit2D hit;
     private float distance = 15f;
     private LineRenderer line;
-
+    public GameObject scriptexe;
     private void Start()
     {
         line = GetComponent<LineRenderer>();
@@ -28,8 +29,16 @@ public class Laser : MonoBehaviour
             barrel = leftbarrel;
         }
         hit = Physics2D.Raycast(barrel.position, barrel.right,distance);
-
         line.SetPosition(0, barrel.position);
         line.SetPosition(1, hit.point);
+  
+       if(Vector3.Distance(barrel.position, hit.point)<=0.2f)
+        {
+            scriptexe.GetComponent<silah>().canshoot = false;
+        }
+        else
+        {
+            scriptexe.GetComponent<silah>().canshoot = true;
+        }
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - BadGuy
   - Mermi
   - GameMusic
+  - textcount
+  - badguy
+  - lostmenu
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - bullet
   - GameMusic
-  - 
+  - chcoll
   - 
   - 
   - 

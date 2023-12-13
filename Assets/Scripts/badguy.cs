@@ -6,7 +6,7 @@ public class badguy : MonoBehaviour
 {
     //[SerializeField] float gecikme = 0.5f;
     
-    bool hasWin = false;
+    public bool hasWin = false;
     public GameObject wonmenu;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -18,6 +18,7 @@ public class badguy : MonoBehaviour
 
             //Invoke("ReloadScene", gecikme);
             wonmenu.SetActive(true);
+            Time.timeScale = 0;
         }
     }
     /*
